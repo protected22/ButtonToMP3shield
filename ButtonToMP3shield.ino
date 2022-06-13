@@ -116,8 +116,8 @@ void loop() {
   if (b_TR2.update()) {
     if (b_TR2.read() == LOW)  {
       Serial.print(F("B_PLAY pressed, Start Playing Track # "));
-      Serial.println(TouchPad_2);
-      MP3player.playTrack(TouchPad_2);
+      Serial.println(TouchPad_1);
+      MP3player.playTrack(TouchPad_1);
       delay(99);
       MP3player.stopTrack();
     }
