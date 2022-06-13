@@ -21,7 +21,7 @@
 #include <vs1053_SdFat.h>
 #include <Bounce2.h> 
 
-//bindnd variabalele to a Analog pin.
+//bind variabalele to a Analog pin.
 #define B_TR1  A0
 #define B_TR2  A1
 #define B_TR3  A2
@@ -40,7 +40,10 @@ Bounce b_TR2  = Bounce();
 Bounce b_TR3  = Bounce();
 
 
- //Connect the variables to a soundfile.
+ 
+
+
+//Connect the variables to a soundfile.
 int8_t TouchPad_1 = 0001;
 int8_t TouchPad_2 = 0002;
 int8_t TouchPad_3 = 0003;
@@ -91,7 +94,8 @@ void setup() {
  * \Loop to let everything work again after something is pressed.
  */
 void loop() {
-
+int8_t number = random(10);
+int8_t TouchPad_ = 0;
 // refil buffer of MP3Shield
 #if defined(USE_MP3_REFILL_MEANS) \
     && ( (USE_MP3_REFILL_MEANS == USE_MP3_SimpleTimer) \
@@ -101,40 +105,50 @@ void loop() {
 #endif
 
 //Setup every button + their functionalities in a if-loop. 
-//Knop 1
-  if (b_TR1.update()) {
+////Knop 1
+//  if (b_TR1.update()) {
+//    if (b_TR1.read() == LOW)  {
+//      Serial.print(F("B_PLAY pressed, Start Playing Track # "));
+//      Serial.println(TouchPad_3);
+//      MP3player.playTrack(TouchPad_3);
+//      delay(99);
+//      MP3player.stopTrack();
+//    }
+//  }
+//
+////Knop 2
+//  if (b_TR2.update()) {
+//    if (b_TR2.read() == LOW)  {
+//      Serial.print(F("B_PLAY pressed, Start Playing Track # "));
+//      Serial.println(TouchPad_1);
+//      MP3player.playTrack(TouchPad_1);
+//      delay(99);
+//      MP3player.stopTrack();
+//    }
+//  }
+
+////Knop 3
+//    if (b_TR3.update()) {
+//    if (b_TR3.read() == LOW)  {
+//      Serial.print(F("B_PLAY pressed, Start Playing Track # "));
+//      Serial.println(TouchPad_2);
+//      MP3player.playTrack(TouchPad_2);
+//      delay(99);
+//      MP3player.stopTrack();
+//    }
+//  }
+
+
+//Knop 4test
+    if (b_TR1.update()) {
     if (b_TR1.read() == LOW)  {
       Serial.print(F("B_PLAY pressed, Start Playing Track # "));
-      Serial.println(TouchPad_3);
-      MP3player.playTrack(TouchPad_3);
+      Serial.println(TouchPad_+number);
+      MP3player.playTrack(TouchPad_+number);
       delay(99);
       MP3player.stopTrack();
     }
   }
-
-//Knop 2
-  if (b_TR2.update()) {
-    if (b_TR2.read() == LOW)  {
-      Serial.print(F("B_PLAY pressed, Start Playing Track # "));
-      Serial.println(TouchPad_1);
-      MP3player.playTrack(TouchPad_1);
-      delay(99);
-      MP3player.stopTrack();
-    }
-  }
-
-//Knop 3
-    if (b_TR3.update()) {
-    if (b_TR3.read() == LOW)  {
-      Serial.print(F("B_PLAY pressed, Start Playing Track # "));
-      Serial.println(TouchPad_2);
-      MP3player.playTrack(TouchPad_2);
-      delay(99);
-      MP3player.stopTrack();
-    }
-  }
-
-
 
 
 //We're no strangers to love
